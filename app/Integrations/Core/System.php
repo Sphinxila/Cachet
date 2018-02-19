@@ -66,6 +66,18 @@ class System implements SystemContract
         $majorOutages = Component::enabled()->authenticated($includePrivate)->status(4)->count();
         $isMajorOutage = $totalComponents ? ($majorOutages / $totalComponents) >= 0.5 : false;
 
+		// We are in maintenance mode
+		if ($this->config->get('setting.show_maintenance')) {
+			$maintenancePeriods = Schedule::inProgress()->count();
+			if ($maintenancePeriods > 0) {
+                return [
+                    'system_status'  => 'warning',
+                    'system_message' => trans_choice('cachet.service.maintenance', $maintenancePeriods),
+                    'favicon'        => 'favicon-high-alert',
+                ];
+			}
+		}
+
         // Default data
         $status = [
             'system_status'  => 'info',

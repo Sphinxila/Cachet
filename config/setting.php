@@ -111,4 +111,14 @@ return [
     */
 
     'only_disrupted_days' => false,
+	
+   /*
+    |--------------------------------------------------------------------------
+    | Make it possible to show maintenance on status page
+    |--------------------------------------------------------------------------
+    |
+    | Display maintenance on status page
+    |
+    */
+	'show_maintenance' => true
 ];
