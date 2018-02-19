@@ -95,6 +95,7 @@ class ComponentGroupPresenter extends BasePresenter implements Arrayable
             'created_at'          => $this->created_at(),
             'updated_at'          => $this->updated_at(),
             'lowest_human_status' => $this->lowest_human_status(),
+			'lowest_status' => $this->lowest_status()
         ]);
     }
 
